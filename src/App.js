@@ -3,12 +3,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+
 } from "react-router-dom";
 import Welcome from './pages/welcome';
 import Help from './pages/help';
 import Game from './pages/game';
-import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/help">
             <Help />
           </Route>
-          <Route path="/">
+          <Route path="/welcome">
             <Welcome />
           </Route>
         </Switch>

@@ -5,7 +5,11 @@ class Header extends React.Component {
     
     render() {
         return (
-            <div></div>
+            <div className="header_container">
+                <img src="" alt=""/>
+                <img src="" alt=""/>
+                <img src="" alt=""/>
+            </div>
         )
     }
 }
