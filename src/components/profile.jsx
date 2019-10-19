@@ -7,6 +7,9 @@ class Profile extends React.Component {
         return(
             <div className="">
                 <div className="">
+                    <div>
+                        <img src="" alt=""/>
+                    </div>
                     <div className="">
                         <div className="">Matches</div>
                         <div className="">0</div>

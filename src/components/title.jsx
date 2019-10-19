@@ -1,13 +1,13 @@
 import React from 'react';
 import './title_styling.css';
-import Title_logo from '../assets/Title_Screen.png'
+import {title_screen} from '../assets/'
 
 class Title extends React.Component {
     render() {
         return(
             <div className="title_container">
                 <div className ="col">
-                    <img src={Title_logo} alt=""/>
+                    <img src={title_screen} alt=""/>
                 </div>
                 
                 <div>Memory Match Game</div>

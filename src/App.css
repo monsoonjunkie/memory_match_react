@@ -20,3 +20,11 @@
 .App-link {
   color: #09d3ac;
 }
+@font-face {
+  font-family: "Personafied";
+  src: url("./assets/fonts/PersonifiedUXRegular.woff") format('woff')
+}
+@font-face {
+  font-family: "Earwig";
+  src: url("./assets/fonts/EarwigFactory-Regular.woff") format('woff')
+}

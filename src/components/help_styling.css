@@ -1,0 +1,39 @@
+.how_to_heading {
+    font-size: 4rem;
+    font-family: 'Personafied';
+    background: #333638;
+    color: white;
+}
+.help_heading2 {
+    font-size: 4vh;
+}
+.help_heading3 {
+    font-size: 2vw;
+    font-family: personafied;
+    background: black;
+    color: white;
+    justify-content: space-between;
+}
+.help_container {
+    text-align: center;
+}
+.help_tip {
+    height: 100%;
+    height: 100%;
+    max-width: 800px;
+    width: 100vw;
+    max-height: 400px;
+}
+.help_bg {
+    background: black;
+}
+.help_close {
+    font-size: 7vh;
+    background: red;
+    font-family: 'Earwig';
+    color: black;
+}
+.help_style {
+    font-size: 3vw;
+    color: white;
+}
