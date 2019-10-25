@@ -13,7 +13,6 @@ import './App.css';
 function App() {
   return (
     <div>
-      test
        <Router>
       <div>
 
