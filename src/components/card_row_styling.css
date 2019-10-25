@@ -1,0 +1,8 @@
+.card_row {
+    display: flex;
+    align-content: space-around;
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    width: 100%;
+    height: 33.33%;
+}
