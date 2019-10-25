@@ -1,0 +1,9 @@
+.card_space {
+    background-color: rgb(0, 0, 0);
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+    right: 25%;
+    left: 25%;
+    position: absolute;
+}
