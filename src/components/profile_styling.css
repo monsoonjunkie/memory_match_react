@@ -1,3 +1,12 @@
 .profile {
     background: black;
 }
+.player_info {
+    background-color: rgb(52, 55, 58);
+    height: 50%;
+}
+.portrait_size {
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+}
