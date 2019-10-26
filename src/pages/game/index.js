@@ -7,19 +7,14 @@ import PlayerStats from '../../components/play_stats';
 
 export default  () => {
     return (
-    <div>
-        <div className="builders">
+        <div className="game_container">
             <Header/>
             <div className ="mid_section">
                 <div className="row no-gutters">
                     <div className="col-3 status_screen">
-                        
                             <Profile profileImage = {joker}/>
                             <PlayerStats/>
-                        
-                        
                     </div>
-                    
                     <div className="col">
                         <Gameboard/>
                     </div>
@@ -29,8 +24,18 @@ export default  () => {
                     </div>
                 </div>
             </div>
+            <div className="app_footer">
+                <div className ="player_turn_container">
+                    <div className="current_turn">Current Turn</div>
+                    <div className="current_turn_name">Player Name</div>   
+                </div>
+                <div className="button_container">
+                    <button>Play Music</button>
+                    <button>Game Reset</button>
+                </div>             
+            </div>
             
         </div>
-    </div>
+    
     )
 }

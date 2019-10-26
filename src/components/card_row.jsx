@@ -7,7 +7,6 @@ class CardRow extends React.Component {
 
     cardList(){
         const cardArray = this.props.cardArray;
-        console.log('list', cardArray)
         let counter = 0;
         let list = cardArray.map(cardObj => {
             counter++;
