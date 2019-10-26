@@ -1,0 +1,21 @@
+.player_stats_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    height: 50%;
+}
+.match {
+    font-family: 'Personafied', 'Earwig', cursive;
+    font-size: 4vh;
+    text-align: center;
+}
+.earwig {
+    font-family: 'Earwig', sans-serif;
+    font-size: 4vh;
+}
+.div_block{
+    display: block;
+    flex: no;
+}
