@@ -10,6 +10,7 @@ import Help from './pages/help';
 import Game from './pages/game';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+
 function App() {
   return (
     <div>
@@ -25,7 +26,7 @@ function App() {
           <Route path="/help">
             <Help />
           </Route>
-          <Route path="/welcome">
+          <Route path="/">
             <Welcome />
           </Route>
         </Switch>
