@@ -29,3 +29,6 @@
     perspective: 600px;
     margin: 1%;
 }
+.card_back_flip {
+    transform: rotateY(180deg);
+}

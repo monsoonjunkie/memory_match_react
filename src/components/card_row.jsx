@@ -10,15 +10,15 @@ class CardRow extends React.Component {
         let counter = 0;
         let list = cardArray.map(cardObj => {
             counter++;
-            return <Card key = {counter} cardImage = {cardObj}/>
+            return <Card key = {counter} cardObj = {cardObj} cardClicked={this.props.cardClicked}/>
         });
         return list;
     }
     render() {
-        let cardItems = this.cardList();
+        console.log('this.props.cardArray', this.props.cardArray)
         return (
             <div className="card_row">
-                {cardItems}
+                {this.cardList()}
             </div>
         )
     }
