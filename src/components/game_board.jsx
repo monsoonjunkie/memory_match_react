@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Cardrow from './card_row.jsx';
 import {one,two,three,four,five,six,seven,eight,nine} from '../assets/';
 import './game_board_styling.css';
-import {loadDeck, cardToggle} from '../../src/store/gameboard/gameboard_actions';
+import {loadDeck, cardToggle, checkMatch} from '../../src/store/gameboard/gameboard_actions';
 
 
 
@@ -12,12 +12,17 @@ class Gameboard_Base extends React.Component {
         super(props);
         this.cardClick = this.cardClick.bind(this);
     }
-
     componentDidMount() {
       this.props.loadDeck(this.randomList());
     }
     cardClick(id){
       this.props.cardClick(id);
+    }
+    checkCard(){
+      let propsCardArr = this.props.gameboard.current
+      if(propsCardArr.length === 2){
+        setTimeout(this.props.checkMatch, 1000);
+      }
     }
     createCardObj(path,index){
       return {
@@ -41,33 +46,25 @@ class Gameboard_Base extends React.Component {
             cardObjArr[currentIndex] = cardObjArr[randomIndex];
             cardObjArr[randomIndex] = temporaryValue;
         }
-        
         return cardObjArr;
     }
     spliceList(array){
         let newArray = array.splice(0,6);
         return newArray;
     }
-    newDeck() {
-      let storeDeck = this.props.gameboard.deck;
-      if(storeDeck.length > 0){
-
-      }
-
-    }
-
     render(){
-        
+        this.checkCard();
         let deck = [...this.props.gameboard.deck];
+        let currentCard = [...this.props.gameboard.current];
+        
         let cardList1 = this.spliceList(deck);
         let cardList2 = this.spliceList(deck);
         let cardList3 = this.spliceList(deck);
-
         return(
             <div className = "card_space">
-                <Cardrow cardClicked={this.cardClick} cardArray={cardList1}/>
-                <Cardrow cardClicked={this.cardClick} cardArray={cardList2}/>
-                <Cardrow cardClicked={this.cardClick} cardArray={cardList3}/>
+                <Cardrow cardClicked={this.cardClick} cardArray={cardList1} currentCard ={currentCard}/>
+                <Cardrow cardClicked={this.cardClick} cardArray={cardList2} currentCard ={currentCard}/>
+                <Cardrow cardClicked={this.cardClick} cardArray={cardList3} currentCard ={currentCard}/>
             </div>
         )
     }
@@ -79,7 +76,6 @@ const mapStateToProps = state => {
         gameboard
   }
 }
-  
   const mapDispatchToProps = dispatch => {
     return {
       loadDeck: deck => {
@@ -87,6 +83,9 @@ const mapStateToProps = state => {
       },
       cardClick: index => {
         dispatch(cardToggle(index));
+      },
+      checkMatch: () => {
+        dispatch(checkMatch());
       }
     }
   }

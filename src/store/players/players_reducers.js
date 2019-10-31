@@ -2,13 +2,13 @@ const initState = {
     player1: {
         name: null,
         matches: null,
-        current: null
+        turn: null
 
     },
     player2: {
         name: null,
         matches: null,
-        current: null
+        turn: null
 
     }  
 
@@ -18,7 +18,7 @@ const initState = {
 const playersReducers = (state = initState, action) => {
     switch (action.type) {
       case '[PLAYER] LOAD_NAME':
-        return {...state, deck: action.payload}
+        return 
       default:
         return state
     }
