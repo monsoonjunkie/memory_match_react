@@ -8,3 +8,8 @@ export const cardToggle = (id) => ({
   payload: id
 })
 
+export const checkMatch = () => ({
+  type: '[GAMEBOARD] RESET_CARD', 
+}
+  
+)

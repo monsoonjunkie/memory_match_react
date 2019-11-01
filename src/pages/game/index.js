@@ -12,8 +12,8 @@ export default  () => {
             <div className ="mid_section">
                 <div className="row no-gutters">
                     <div className="col-3 status_screen">
-                            <Profile profileImage = {joker}/>
-                            <PlayerStats/>
+                        <Profile profileImage = {joker}/>
+                        <PlayerStats/>
                     </div>
                     <div className="col">
                         <Gameboard/>

@@ -10,12 +10,11 @@ class CardRow extends React.Component {
         let counter = 0;
         let list = cardArray.map(cardObj => {
             counter++;
-            return <Card key = {counter} cardObj = {cardObj} cardClicked={this.props.cardClicked}/>
+            return <Card key = {counter} cardObj = {cardObj} cardClicked={this.props.cardClicked} currentCard ={this.props.currentCard}/>
         });
         return list;
     }
     render() {
-        console.log('this.props.cardArray', this.props.cardArray)
         return (
             <div className="card_row">
                 {this.cardList()}
