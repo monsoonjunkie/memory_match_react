@@ -1,13 +1,13 @@
 const initState = {
     player1: {
-        name: null,
-        matches: null,
+        name: 'Joker',
+        matches: 0,
         turn: null
 
     },
     player2: {
-        name: null,
-        matches: null,
+        name: 'Panther',
+        matches: 0,
         turn: null
 
     }  
