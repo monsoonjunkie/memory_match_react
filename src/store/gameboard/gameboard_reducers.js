@@ -29,7 +29,6 @@ const gameBoardReducers = (state = initState, action) => {
             }
           }
         }
-        
         return {...state, deck: resetDeck, current: []}
       default:
         return state
