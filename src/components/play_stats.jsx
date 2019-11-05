@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import {updatePoints} from '../../src/store/players/players_actions';
 
 class PlayerStats_Base extends React.Component {
-    constructor(props){
-        super(props)
-        
-    }
+    
     checkMatch() {
         let storeGameboard = this.props.playerStats.gameboard
         if(storeGameboard.current.length === 2){

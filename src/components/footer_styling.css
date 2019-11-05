@@ -1,0 +1,29 @@
+.app_footer {
+    background: black;
+    height: 25%;
+  }
+  .player_turn_container {
+    display: flex;
+    justify-content: center;
+  }
+  .player_turn_container>div {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+  .button_container {
+    display: flex;
+    justify-content: space-around;
+  }
+  .button_container > button {
+    margin-top: 10px;
+  }
+  .current_turn {
+    color: red;
+    font-family: "Earwig";
+    font-size: 4vh;
+  }
+  .current_turn_name {
+    color: white;
+    font-family: "Personafied";
+    font-size: 4vh;
+  }
