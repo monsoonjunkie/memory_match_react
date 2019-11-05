@@ -1,12 +1,26 @@
 import React from 'react';
 import './player_stats_styling.css';
 import { connect } from 'react-redux';
-// import {} from '../../src/store/players/players_actions';
+import {updatePoints} from '../../src/store/players/players_actions';
 
 class PlayerStats_Base extends React.Component {
+    constructor(props){
+        super(props)
+        
+    }
+    checkMatch() {
+        let storeGameboard = this.props.playerStats.gameboard
+        if(storeGameboard.current.length === 2){
+            if(storeGameboard.current[0].path === storeGameboard.current[1].path){
+                this.props.updatePoints()
+            }
+        }
+    }
     render(){
+        
         let player = this.props.player;
-        let playerStats = this.props.playerStats[player];
+        let playerStats = this.props.playerStats.players[player];
+        console.log('playerturn', this.props.playerStats.players.playerTurn)
         return(
             <div className="player_stats_info match">
                 
@@ -20,7 +34,8 @@ class PlayerStats_Base extends React.Component {
     }
 }
 const mapStateToProps = state => {
-    const playerStats = state.players
+    const playerStats = state
+
     return {
         playerStats
   }
@@ -28,8 +43,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        stats: points => {
-            console.log('i got here')
+        updatePoints: points => {
+            dispatch(updatePoints());
         }
     }
 }
