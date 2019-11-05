@@ -4,6 +4,7 @@ import Cardrow from './card_row.jsx';
 import {one,two,three,four,five,six,seven,eight,nine} from '../assets/';
 import './game_board_styling.css';
 import {loadDeck, cardToggle, checkMatch} from '../../src/store/gameboard/gameboard_actions';
+import {updatePoints, playerTurn} from '../../src/store/players/players_actions';
 
 
 
@@ -21,7 +22,12 @@ class Gameboard_Base extends React.Component {
     checkCard(){
       let propsCardArr = this.props.gameboard.current
       if(propsCardArr.length === 2){
-        setTimeout(this.props.checkMatch, 1000);
+        let match = this.props.gameboard.match;
+        if(propsCardArr[0].path === propsCardArr[1].path){
+          match = true;
+        }
+        
+        setTimeout(()=>this.props.checkMatch(match), 1000);
       }
     }
     createCardObj(path,index){
@@ -56,6 +62,7 @@ class Gameboard_Base extends React.Component {
         this.checkCard();
         let deck = [...this.props.gameboard.deck];
         let currentCard = [...this.props.gameboard.current];
+        console.log('matchstatus', this.props.gameboard.match)
         
         let cardList1 = this.spliceList(deck);
         let cardList2 = this.spliceList(deck);
@@ -84,8 +91,10 @@ const mapStateToProps = state => {
       cardClick: index => {
         dispatch(cardToggle(index));
       },
-      checkMatch: () => {
+      checkMatch: match => {
         dispatch(checkMatch());
+        dispatch(updatePoints(match));
+        dispatch(playerTurn());
       }
     }
   }
