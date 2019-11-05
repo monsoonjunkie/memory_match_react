@@ -4,6 +4,7 @@ import Header from '../../components/header.jsx';
 import {joker, panther} from '../../assets/portraits/';
 import Profile from '../../components/profile';
 import PlayerStats from '../../components/play_stats';
+import Footer from '../../components/footer';
 
 export default  () => {
     return (
@@ -24,16 +25,7 @@ export default  () => {
                     </div>
                 </div>
             </div>
-            <div className="app_footer">
-                <div className ="player_turn_container">
-                    <div className="current_turn">Current Turn</div>
-                    <div className="current_turn_name">Player Name</div>   
-                </div>
-                <div className="button_container">
-                    <button>Play Music</button>
-                    <button>Game Reset</button>
-                </div>             
-            </div>
+            <Footer/>
             
         </div>
     

@@ -62,7 +62,6 @@ class Gameboard_Base extends React.Component {
         this.checkCard();
         let deck = [...this.props.gameboard.deck];
         let currentCard = [...this.props.gameboard.current];
-        console.log('matchstatus', this.props.gameboard.match)
         
         let cardList1 = this.spliceList(deck);
         let cardList2 = this.spliceList(deck);
