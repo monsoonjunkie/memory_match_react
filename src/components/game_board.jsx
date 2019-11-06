@@ -14,7 +14,7 @@ class Gameboard_Base extends React.Component {
         this.cardClick = this.cardClick.bind(this);
     }
     componentDidMount() {
-      this.props.loadDeck(this.randomList());
+      this.props.loadDeck();
     }
     cardClick(id){
       this.props.cardClick(id);
@@ -62,7 +62,6 @@ class Gameboard_Base extends React.Component {
         this.checkCard();
         let deck = [...this.props.gameboard.deck];
         let currentCard = [...this.props.gameboard.current];
-        
         let cardList1 = this.spliceList(deck);
         let cardList2 = this.spliceList(deck);
         let cardList3 = this.spliceList(deck);

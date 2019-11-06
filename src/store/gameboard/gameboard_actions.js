@@ -1,6 +1,6 @@
-export const loadDeck = deck => ({
+export const loadDeck = () => ({
     type: '[GAMEBOARD] LOAD_DECK', 
-    payload: deck
+    
   })
 
 export const cardToggle = (id) => ({
@@ -10,6 +10,8 @@ export const cardToggle = (id) => ({
 
 export const checkMatch = () => ({
   type: '[GAMEBOARD] RESET_CARD', 
-}
-  
-)
+})
+
+export const resetGame = () => ({
+  type: '[GAMEBOARD] RESET_GAMEBOARD', 
+})

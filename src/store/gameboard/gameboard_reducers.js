@@ -1,10 +1,12 @@
+import {one,two,three,four,five,six,seven,eight,nine} from '../../assets';
 const initState = {deck:[], current: [], match: false};
-
+const shuffleDeck = randomList();
 
 const gameBoardReducers = (state = initState, action) => {
+
     switch (action.type) {
       case '[GAMEBOARD] LOAD_DECK':
-        return {...state, deck: action.payload}
+        return {...state, deck: shuffleDeck}
       case '[GAMEBOARD] TOGGLE_CARD':
         
         let newDeck = [...state.deck];
@@ -33,9 +35,37 @@ const gameBoardReducers = (state = initState, action) => {
           }
         }
         return {...state, deck: resetDeck, current: [], match: matchStatus}
+      case '[GAMEBOARD] RESET_GAMEBOARD':
+        let diffDeck = randomList();
+        return {...state, deck: diffDeck, current: [], match: false}
       default:
         return state
     }
   }
   
   export default gameBoardReducers
+
+  function createCardObj(path,index){
+    return {
+      id: index,
+      path: path,
+      revealed: false
+    }
+  }
+  function randomList(){
+      const cardArray = [one,two,three,four,five,six,seven,eight,nine];
+      const bigArray = cardArray.concat(cardArray);
+      const cardObjArr = bigArray.map(createCardObj);
+      let currentIndex = cardObjArr.length, temporaryValue, randomIndex;
+      
+      while (0 !== currentIndex) {
+      
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+      
+          temporaryValue = cardObjArr[currentIndex];
+          cardObjArr[currentIndex] = cardObjArr[randomIndex];
+          cardObjArr[randomIndex] = temporaryValue;
+      }
+      return cardObjArr;
+  }

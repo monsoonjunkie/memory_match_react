@@ -12,7 +12,8 @@ const initState = {
         
 
     },
-    playerTurn: 'player1' 
+    playerTurn: 'player1',
+    totalMatches: 0 
 
 };
 
@@ -23,12 +24,14 @@ const playersReducers = (state = initState, action) => {
         return 
       case '[PLAYER] UPDATE_POINTS':
         let player = state.playerTurn;
-        let updatePoints = state[player].matches
+        let updatePoints = state[player].matches;
+        let currentMatches = state.totalMatches;
         if(action.payload){
-          updatePoints = updatePoints + 1
+          updatePoints = updatePoints + 1;
+          currentMatches = currentMatches + 1;
         }
         let updateScore = {...state[player], matches: updatePoints }
-        return {...state, [player]: updateScore}
+        return {...state, [player]: updateScore, totalMatches: currentMatches}
 
       case '[PLAYER] UPDATE_PLAYERTURN':
         if(state.playerTurn === 'player1'){
