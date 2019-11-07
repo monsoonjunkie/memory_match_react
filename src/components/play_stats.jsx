@@ -17,7 +17,6 @@ class PlayerStats_Base extends React.Component {
         
         let player = this.props.player;
         let playerStats = this.props.playerStats.players[player];
-        console.log('playerturn', this.props.playerStats.players.playerTurn)
         return(
             <div className="player_stats_info match">
                 
