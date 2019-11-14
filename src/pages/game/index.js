@@ -1,10 +1,11 @@
 import React from 'react';
-import Gameboard from '../../components/game_board.jsx';
-import Header from '../../components/header.jsx';
+import Gameboard from '../../components/game_board/game_board';
+import Header from '../../components/header/header';
 import {joker, panther} from '../../assets/portraits/';
-import Profile from '../../components/profile';
-import PlayerStats from '../../components/play_stats';
-import Footer from '../../components/footer';
+import Profile from '../../components/profile/profile';
+import PlayerStats from '../../components/player_stats/play_stats';
+import Footer from '../../components/footer/footer';
+import Modal from '../../components/modal/modal';
 
 export default  () => {
     return (
@@ -25,6 +26,7 @@ export default  () => {
                     </div>
                 </div>
             </div>
+            <Modal/>
             <Footer/>
             
         </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import './footer_styling.css';
 import { connect } from 'react-redux';
-import battleMusic from '../assets/music/Persona_5_Last_Surprise.mp3';
-import {toggleMusic} from '../store/music/music_actions';
-import {resetGame, loadDeck} from '../store/gameboard/gameboard_actions';
+import battleMusic from '../../assets/music/Persona_5_Last_Surprise.mp3';
+import {toggleMusic} from '../../store/music/music_actions';
+import {resetGame, loadDeck} from '../../store/gameboard/gameboard_actions';
 
 
 class Footer_Base extends React.Component {

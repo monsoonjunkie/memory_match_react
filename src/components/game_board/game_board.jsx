@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Cardrow from './card_row.jsx';
-import {one,two,three,four,five,six,seven,eight,nine} from '../assets/';
+import Cardrow from '../card_row/card_row';
 import './game_board_styling.css';
-import {loadDeck, cardToggle, checkMatch} from '../../src/store/gameboard/gameboard_actions';
-import {updatePoints, playerTurn} from '../../src/store/players/players_actions';
+import {loadDeck, cardToggle, checkMatch} from '../../store/gameboard/gameboard_actions';
+import {updatePoints, playerTurn} from '../../store/players/players_actions';
+import {showCritical, showFinisher} from '../../store/modal/modal_actions';
 
 
 
@@ -20,14 +20,23 @@ class Gameboard_Base extends React.Component {
       this.props.cardClick(id);
     }
     checkCard(){
-      let propsCardArr = this.props.gameboard.current
+      
+      let propsCardArr = this.props.gameboardProps.gameboard.current
       if(propsCardArr.length === 2){
-        let match = this.props.gameboard.match;
+        let match = this.props.gameboardProps.gameboard.match;
+        let modal = this.props.gameboardProps.modal;
         if(propsCardArr[0].path === propsCardArr[1].path){
+          // this.props.showCritical();
+          if(!modal.show){
+            this.props.showCritical();
+          }
           match = true;
+          setTimeout(()=>this.props.checkMatch(match), 3000);
+        } else {
+          setTimeout(()=>this.props.checkMatch(match), 1000);
         }
         
-        setTimeout(()=>this.props.checkMatch(match), 1000);
+        
       }
     }
     createCardObj(path,index){
@@ -37,31 +46,15 @@ class Gameboard_Base extends React.Component {
         revealed: false
       }
     }
-    randomList(){
-        const cardArray = [one,two,three,four,five,six,seven,eight,nine];
-        const bigArray = cardArray.concat(cardArray);
-        const cardObjArr = bigArray.map(this.createCardObj);
-        let currentIndex = cardObjArr.length, temporaryValue, randomIndex;
-        
-        while (0 !== currentIndex) {
-        
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-        
-            temporaryValue = cardObjArr[currentIndex];
-            cardObjArr[currentIndex] = cardObjArr[randomIndex];
-            cardObjArr[randomIndex] = temporaryValue;
-        }
-        return cardObjArr;
-    }
     spliceList(array){
         let newArray = array.splice(0,6);
         return newArray;
     }
     render(){
+        console.log('modal', this.props.gameboardProps.modal)
         this.checkCard();
-        let deck = [...this.props.gameboard.deck];
-        let currentCard = [...this.props.gameboard.current];
+        let deck = [...this.props.gameboardProps.gameboard.deck];
+        let currentCard = [...this.props.gameboardProps.gameboard.current];
         let cardList1 = this.spliceList(deck);
         let cardList2 = this.spliceList(deck);
         let cardList3 = this.spliceList(deck);
@@ -76,9 +69,9 @@ class Gameboard_Base extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const gameboard = state.gameboard
+    const gameboardProps = {gameboard: state.gameboard, players: state.players, modal: state.modal};
     return {
-        gameboard
+      gameboardProps
   }
 }
   const mapDispatchToProps = dispatch => {
@@ -93,6 +86,12 @@ const mapStateToProps = state => {
         dispatch(checkMatch());
         dispatch(updatePoints(match));
         dispatch(playerTurn());
+      },
+      showCritical: () =>{
+        dispatch(showCritical());
+      },
+      showFinisher: () => {
+        dispatch(showFinisher());
       }
     }
   }

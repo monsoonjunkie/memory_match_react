@@ -1,6 +1,6 @@
 import React from 'react';
 import './card_styling.css';
-import Tarotback from '../assets/tarot_back.png';
+import Tarotback from '../../assets/tarot_back.png';
 class Card_Base extends React.Component {
   constructor(props){
     super(props)
@@ -11,6 +11,7 @@ class Card_Base extends React.Component {
       let propsCardArr = this.props.currentCard;
       if(!card.revealed && propsCardArr.length < 2){
         this.props.cardClicked(this.props.cardObj.id)
+        console.log('cards', propsCardArr.length)
       }
     }
     render() {

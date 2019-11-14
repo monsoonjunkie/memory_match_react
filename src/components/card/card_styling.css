@@ -11,6 +11,7 @@
     transform: translateZ(1px);
     backface-visibility: hidden;
     background: white;
+    display: none;
     
 }
 .card_front, .card_back {
