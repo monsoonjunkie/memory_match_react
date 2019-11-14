@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './card.jsx';
+import Card from '../card/card.jsx';
 import './card_row_styling.css';
 
 

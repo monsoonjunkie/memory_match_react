@@ -26,6 +26,9 @@ const gameBoardReducers = (state = initState, action) => {
       case '[GAMEBOARD] RESET_CARD':
         let resetDeck = [...state.deck];
         let matchStatus = false;
+        if(state.current.length === 0){
+          return {...state, deck: resetDeck, current: [], match: matchStatus}
+        }
         if(!(state.current[0].path === state.current[1].path)){
 
             for( let i = 0; i < resetDeck.length; i++){

@@ -1,5 +1,5 @@
 import React from 'react';
-import 'music_button_styling';
+import './music_button_styling';
 
 class MusicButton extends React.Component {
     render() {
