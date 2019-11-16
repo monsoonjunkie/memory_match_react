@@ -13,7 +13,7 @@ class Modal_Base extends React.Component {
   }
  modalRoot({ modalType, modalProps }){
    if(!modalType) {
-     return <div>Fun</div>
+     return <div className = "modal">Fun</div>
    }
   
    const SpecificModal = MODAL_COMPONENTS[modalType]
