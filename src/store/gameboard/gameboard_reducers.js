@@ -26,18 +26,20 @@ const gameBoardReducers = (state = initState, action) => {
       case '[GAMEBOARD] RESET_CARD':
         let resetDeck = [...state.deck];
         let matchStatus = false;
+        console.log('current', state.current.length)
         if(state.current.length === 0){
           return {...state, deck: resetDeck, current: [], match: matchStatus}
         }
-        if(!(state.current[0].path === state.current[1].path)){
+          if(!(state.current[0].path === state.current[1].path)){
 
             for( let i = 0; i < resetDeck.length; i++){
-            if(resetDeck[i].id === state.current[0].id || resetDeck[i].id === state.current[1].id){
-              resetDeck[i].revealed = false;
-            }
+              if(resetDeck[i].id === state.current[0].id || resetDeck[i].id === state.current[1].id){
+                resetDeck[i].revealed = false;
+              }
           }
         }
         return {...state, deck: resetDeck, current: [], match: matchStatus}
+        
       case '[GAMEBOARD] RESET_GAMEBOARD':
         let diffDeck = randomList();
         return {...state, deck: diffDeck, current: [], match: false}
