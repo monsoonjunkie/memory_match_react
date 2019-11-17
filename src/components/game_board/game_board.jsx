@@ -4,7 +4,7 @@ import Cardrow from '../card_row/card_row';
 import './game_board_styling.css';
 import {loadDeck, cardToggle, checkMatch} from '../../store/gameboard/gameboard_actions';
 import {updatePoints, playerTurn} from '../../store/players/players_actions';
-import {showCritical, showFinisher} from '../../store/modal/modal_actions';
+import {showCritical, showFinisher, closeModal} from '../../store/modal/modal_actions';
 
 
 
@@ -20,20 +20,29 @@ class Gameboard_Base extends React.Component {
       this.props.cardClick(id);
     }
     checkCard(){
+
       
       let propsCardArr = this.props.gameboardProps.gameboard.current
       if(propsCardArr.length === 2){
         let match = this.props.gameboardProps.gameboard.match;
         let modal = this.props.gameboardProps.modal;
+
         if(propsCardArr[0].path === propsCardArr[1].path){
-          // this.props.showCritical();
+          console.log('i got here')
           if(!modal.show){
             this.props.showCritical();
+            // setTimeout(this.props.closeModal, 2000);
+
           }
-          match = true;
-          setTimeout(()=>this.props.checkMatch(match), 3000);
+
+          this.props.checkMatch(true);
+          setTimeout(this.props.playerTurn, 2000);
+
+
+
         } else {
-          setTimeout(()=>this.props.checkMatch(match), 1000);
+          console.log('i got here2')
+          setTimeout(()=>{this.props.checkMatch(false); this.props.playerTurn() }, 1000);
         }
         
         
@@ -51,7 +60,7 @@ class Gameboard_Base extends React.Component {
         return newArray;
     }
     render(){
-        console.log('modal', this.props.gameboardProps.modal)
+
         this.checkCard();
         let deck = [...this.props.gameboardProps.gameboard.deck];
         let currentCard = [...this.props.gameboardProps.gameboard.current];
@@ -85,13 +94,22 @@ const mapStateToProps = state => {
       checkMatch: match => {
         dispatch(checkMatch());
         dispatch(updatePoints(match));
+        // dispatch(playerTurn());
+      },
+      playerTurn: () => {
         dispatch(playerTurn());
+      },
+      updatePoints: match => {
+        dispatch(updatePoints(match));
       },
       showCritical: () =>{
         dispatch(showCritical());
       },
       showFinisher: () => {
         dispatch(showFinisher());
+      },
+      closeModal: () => {
+        dispatch(closeModal());
       }
     }
   }

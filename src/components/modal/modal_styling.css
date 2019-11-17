@@ -1,4 +1,4 @@
-.modal {
+.custom_modal {
     display: none; 
     position: fixed; 
     z-index: 1;
@@ -33,3 +33,22 @@
     align-items: center;
     height: 100vh;
   }
+  .visibility {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+  }
+  .hiddened {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  }
+
+.critical {
+        height: 100%;
+        width: 100%;
+        background-size: contain;
+}
+.modal_finale {
+    width: 100%;
+}
