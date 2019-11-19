@@ -1,5 +1,6 @@
 .custom_modal {
-    display: none; 
+    display: block;
+    visibility: hidden; 
     position: fixed; 
     z-index: 1;
     left: 0;
@@ -51,4 +52,10 @@
 }
 .modal_finale {
     width: 100%;
+}
+.open_modal{
+  display: block;
+}
+.close_modal{
+  display: none
 }

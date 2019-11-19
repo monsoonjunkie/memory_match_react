@@ -26,7 +26,7 @@ const gameBoardReducers = (state = initState, action) => {
       case '[GAMEBOARD] RESET_CARD':
         let resetDeck = [...state.deck];
         let matchStatus = false;
-        console.log('current', state.current.length)
+
         if(state.current.length === 0){
           return {...state, deck: resetDeck, current: [], match: matchStatus}
         }

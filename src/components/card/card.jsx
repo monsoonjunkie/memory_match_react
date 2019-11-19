@@ -11,7 +11,6 @@ class Card_Base extends React.Component {
       let propsCardArr = this.props.currentCard;
       if(!card.revealed && propsCardArr.length < 2){
         this.props.cardClicked(this.props.cardObj.id)
-        console.log('cards', propsCardArr.length)
       }
     }
     render() {

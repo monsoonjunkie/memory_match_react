@@ -32,7 +32,7 @@ const playersReducers = (state = initState, action) => {
         // let player = state.playerTurn;
         let updatePoints = state[player].matches;
         let currentMatches = state.totalMatches;
-        console.log('who', player)
+
         if(action.payload){
           updatePoints = updatePoints + 1;
           currentMatches = currentMatches + 1;

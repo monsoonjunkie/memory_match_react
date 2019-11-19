@@ -1,16 +1,20 @@
 
 
 export const showCritical = modalPropsObj => ({
-    type: 'SHOW_MODAL',
+    type: 'CHANGE_MODAL',
     modalType: 'CRITICAL',
     modalProps: modalPropsObj
 });
 
 export const showFinisher = modalPropsObj => ({
-    type: 'SHOW_MODAL',
+    type: 'CHANGE_MODAL',
     modalType: 'FINISHER',
     modalProps: modalPropsObj
 });
+
+export const openModal = () => ({
+    type: 'OPEN_MODAL'
+})
 
 export const closeModal = () => ({
     type: 'HIDE_MODAL'
