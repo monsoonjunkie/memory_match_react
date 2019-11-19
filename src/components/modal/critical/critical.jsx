@@ -7,7 +7,7 @@ class Critical extends React.Component {
         console.log('crit props', this.props.content.modal.show)
         let show =  this.props.content.modal.show
         return(
-            <div id="my_modal" className ="custom_modal">
+            <div  className ={`custom_modal`}>
                 <div className={`modal_content ${ show ? 'visibility': 'hiddened'}`}>
                     <img className="" src={joker_crit} alt=""/>
                 </div>
