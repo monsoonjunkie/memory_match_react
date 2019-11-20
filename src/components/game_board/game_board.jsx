@@ -4,7 +4,7 @@ import Cardrow from '../card_row/card_row';
 import './game_board_styling.css';
 import {loadDeck, cardToggle, checkMatch} from '../../store/gameboard/gameboard_actions';
 import {updatePoints, playerTurn} from '../../store/players/players_actions';
-import {showCritical, showFinisher, openModal, closeModal} from '../../store/modal/modal_actions';
+import {showCritical, showFinisher, openModal, closeModal, resetModal } from '../../store/modal/modal_actions';
 
 
 
@@ -24,20 +24,17 @@ class Gameboard_Base extends React.Component {
       
       let propsCardArr = this.props.gameboardProps.gameboard.current
       if(propsCardArr.length === 2){
-        let match = this.props.gameboardProps.gameboard.match;
         let modal = this.props.gameboardProps.modal;
-
+        
         if(propsCardArr[0].path === propsCardArr[1].path){
 
           if(!modal.show){
-            this.props.showCritical();
-            this.props.openModal();
-            // setTimeout(this.props.closeModal, 2000);
-
+            this.matchAnimation();
           }
 
+
           this.props.checkMatch(true);
-          setTimeout(this.props.playerTurn, 2000);
+          setTimeout(this.props.playerTurn, 2500);
 
 
 
@@ -48,6 +45,11 @@ class Gameboard_Base extends React.Component {
         
         
       }
+    }
+    matchAnimation() {
+      this.props.showCritical();
+      setTimeout(this.props.openModal);
+      setTimeout(this.props.closeModal, 1500);
     }
     createCardObj(path,index){
       return {
@@ -95,10 +97,10 @@ const mapStateToProps = state => {
       checkMatch: match => {
         dispatch(checkMatch());
         dispatch(updatePoints(match));
-        // dispatch(playerTurn());
       },
       playerTurn: () => {
         dispatch(playerTurn());
+        dispatch(resetModal());
       },
       updatePoints: match => {
         dispatch(updatePoints(match));
@@ -114,6 +116,9 @@ const mapStateToProps = state => {
       },
       closeModal: () => {
         dispatch(closeModal());
+      },
+      resetModal: () => {
+        dispatch(resetModal());
       }
     }
   }

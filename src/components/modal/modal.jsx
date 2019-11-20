@@ -8,20 +8,22 @@ const MODAL_COMPONENTS = {
   'FINISHER': null,
 }
 class Modal_Base extends React.Component {
-  constructor(props){
-    super(props)
-  }
+
  modalRoot({ modalType, modalProps }){
+
    if(!modalType) {
-     return null
+
+     return <div className="modalsuff"></div>
    }
   
    const SpecificModal = MODAL_COMPONENTS[modalType]
-  return <SpecificModal {...modalProps} content={this.props.modal}/>
+   console.log('modal props', modalProps)
+  return <SpecificModal {...modalProps} />
  }
   render() {
-    console.log('props', this.props)
-    let modal = this.modalRoot(this.props.modal.modal);
+    console.log('props', this.props.modal)
+
+    let modal = this.modalRoot({modalType: this.props.modal.modalType, modalProps: this.props.modal});
     return modal;
   }
 }
@@ -29,9 +31,9 @@ class Modal_Base extends React.Component {
 
 
 const mapStateToProps = state => {
-  const modal = {modal: state.modal, players: state.players }
   return {
-      modal
+    modal: state.modal, 
+    players: state.players 
   }
 }
 
