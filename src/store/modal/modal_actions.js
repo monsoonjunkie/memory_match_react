@@ -19,3 +19,6 @@ export const openModal = () => ({
 export const closeModal = () => ({
     type: 'HIDE_MODAL'
 });
+export const resetModal = () => ({
+    type: 'RESET_MODAL'
+})

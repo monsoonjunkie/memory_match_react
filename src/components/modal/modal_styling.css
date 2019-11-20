@@ -1,6 +1,5 @@
 .custom_modal {
     display: block;
-    visibility: hidden; 
     position: fixed; 
     z-index: 1;
     left: 0;
@@ -37,12 +36,12 @@
   .visibility {
     visibility: visible;
     opacity: 1;
-    transition: opacity 2s linear;
+    transition: opacity 1s linear;
   }
   .hiddened {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s 2s, opacity 2s linear;
+    transition: visibility 0s 1s, opacity 1s linear;
   }
 
 .critical {

@@ -4,8 +4,8 @@ import {joker_crit} from '../../../assets/criticals';
 
 class Critical extends React.Component {
     render(){
-        console.log('crit props', this.props.content.modal.show)
-        let show =  this.props.content.modal.show
+        console.log('crit props', this.props)
+        let show = this.props.show
         return(
             <div  className ={`custom_modal`}>
                 <div className={`modal_content ${ show ? 'visibility': 'hiddened'}`}>
