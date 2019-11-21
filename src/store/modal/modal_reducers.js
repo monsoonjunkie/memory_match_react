@@ -13,7 +13,7 @@ const modalReducers = (state = initialState, action) => {
           modalProps: action.modalProps,
         }
       case 'OPEN_MODAL':
-        console.log('it got here')
+
         return {...state, show: true}
       case 'HIDE_MODAL':
         let modalState = {...state, show: false}

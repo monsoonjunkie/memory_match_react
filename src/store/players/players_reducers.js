@@ -28,8 +28,6 @@ const playersReducers = (state = initState, action) => {
       case '[PLAYER] LOAD_NAME':
         return 
       case '[PLAYER] UPDATE_POINTS':
-        
-        // let player = state.playerTurn;
         let updatePoints = state[player].matches;
         let currentMatches = state.totalMatches;
 
@@ -48,10 +46,11 @@ const playersReducers = (state = initState, action) => {
         }else {
           return {...state, playerTurn: 'player1' }
         }
-        
+      case '[PLAYER] RESET_POINTS': 
+        return initState
       default:
         return state
     }
   }
   
-  export default playersReducers
+  export default playersReducers;

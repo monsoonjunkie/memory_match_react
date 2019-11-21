@@ -1,15 +1,23 @@
 import React from 'react';
 import './critical_styling.css';
-import {joker_crit} from '../../../assets/criticals';
+import {joker_crit, panther_crit} from '../../../assets/criticals';
 
 class Critical extends React.Component {
+    player(){
+        let player = this.props.players.playerTurn;
+        if(player === 'player1'){
+            return joker_crit
+        }else{
+            return panther_crit
+        }
+    }
     render(){
-        console.log('crit props', this.props)
-        let show = this.props.show
+        let show = this.props.modal.show
+        let playerCrit = this.player()
         return(
             <div  className ={`custom_modal`}>
                 <div className={`modal_content ${ show ? 'visibility': 'hiddened'}`}>
-                    <img className="" src={joker_crit} alt=""/>
+                    <img className="" src={playerCrit} alt=""/>
                 </div>
             </div>
 
@@ -19,18 +27,4 @@ class Critical extends React.Component {
 
 export default Critical;
 
-// {/* <div className="custom_modal" >
-//         <div className="fade-in">
-//          <img src={joker_crit} alt=""/>
-//          <div>Critical</div>
-//        </div>
-//      </div>
-
-//      <div id="my_modal" class="custom_modal">
-//         <div class="modal_content">
-//             <div>
-//                 <img class="critical">
-//             </div>
-//         </div>
-//         </div> */}
 

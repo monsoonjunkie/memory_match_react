@@ -19,27 +19,20 @@ class Gameboard_Base extends React.Component {
     cardClick(id){
       this.props.cardClick(id);
     }
-    checkCard(){
-
-      
-      let propsCardArr = this.props.gameboardProps.gameboard.current
+    checkCard(){      
+      let propsCardArr = this.props.gameboard.current
       if(propsCardArr.length === 2){
-        let modal = this.props.gameboardProps.modal;
+        let modal = this.props.modal;
         
         if(propsCardArr[0].path === propsCardArr[1].path){
-
+          
+          this.props.checkMatch(true);
           if(!modal.show){
             this.matchAnimation();
           }
-
-
-          this.props.checkMatch(true);
-          setTimeout(this.props.playerTurn, 2500);
-
-
-
+          setTimeout(this.props.playerTurn, 2400);
         } else {
-          console.log('i got here2')
+
           setTimeout(()=>{this.props.checkMatch(false); this.props.playerTurn() }, 1000);
         }
         
@@ -47,9 +40,18 @@ class Gameboard_Base extends React.Component {
       }
     }
     matchAnimation() {
-      this.props.showCritical();
-      setTimeout(this.props.openModal);
-      setTimeout(this.props.closeModal, 1500);
+      let matches = this.props.players.totalMatches;
+      matches = matches + 1
+      if(matches === 9){
+        this.props.showFinisher();
+        setTimeout(this.props.openModal,250);
+        setTimeout(this.props.closeModal, 2000);
+      }else {
+        this.props.showCritical();
+        setTimeout(this.props.openModal);
+        setTimeout(this.props.closeModal, 1500);
+      }
+      
     }
     createCardObj(path,index){
       return {
@@ -63,10 +65,10 @@ class Gameboard_Base extends React.Component {
         return newArray;
     }
     render(){
-
+        
         this.checkCard();
-        let deck = [...this.props.gameboardProps.gameboard.deck];
-        let currentCard = [...this.props.gameboardProps.gameboard.current];
+        let deck = [...this.props.gameboard.deck];
+        let currentCard = [...this.props.gameboard.current];
         let cardList1 = this.spliceList(deck);
         let cardList2 = this.spliceList(deck);
         let cardList3 = this.spliceList(deck);
@@ -81,10 +83,9 @@ class Gameboard_Base extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const gameboardProps = {gameboard: state.gameboard, players: state.players, modal: state.modal};
-    return {
-      gameboardProps
-  }
+
+    // const gameboardProps = {gameboard: state.gameboard, players: state.players, modal: state.modal};
+    return state
 }
   const mapDispatchToProps = dispatch => {
     return {
