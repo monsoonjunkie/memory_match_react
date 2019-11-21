@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import battleMusic from '../../assets/music/Persona_5_Last_Surprise.mp3';
 import {toggleMusic} from '../../store/music/music_actions';
 import {resetGame, loadDeck} from '../../store/gameboard/gameboard_actions';
-
+import {resetPoints} from '../../store/players/players_actions';
 
 class Footer_Base extends React.Component {
     constructor(props){
@@ -63,7 +63,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleMusic: () => { dispatch(toggleMusic())},
-        resetGame: () => dispatch(resetGame()),
+        resetGame: () => {dispatch(resetGame()); dispatch(resetPoints())},
         loadDeck: () => dispatch(loadDeck())
     }
 }

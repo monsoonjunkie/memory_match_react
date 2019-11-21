@@ -2,10 +2,11 @@ import React from 'react';
 import './modal_styling.css';
 import { connect } from 'react-redux';
 import Critical from './critical/critical';
+import Finisher from './finisher/finisher';
 
 const MODAL_COMPONENTS = {
   'CRITICAL': Critical,
-  'FINISHER': null,
+  'FINISHER': Finisher,
 }
 class Modal_Base extends React.Component {
 
@@ -17,13 +18,11 @@ class Modal_Base extends React.Component {
    }
   
    const SpecificModal = MODAL_COMPONENTS[modalType]
-   console.log('modal props', modalProps)
+
   return <SpecificModal {...modalProps} />
  }
   render() {
-    console.log('props', this.props.modal)
-
-    let modal = this.modalRoot({modalType: this.props.modal.modalType, modalProps: this.props.modal});
+    let modal = this.modalRoot({modalType: this.props.modal.modalType, modalProps: {modal: this.props.modal, players: this.props.players}});
     return modal;
   }
 }
