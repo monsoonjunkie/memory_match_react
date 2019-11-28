@@ -1,6 +1,6 @@
 import React from 'react';
-import Title from '../assets/Title_Screen.png';
-import Hat from '../assets/hat.png';
+import Title from '../../assets/Title_Screen.png';
+import Hat from '../../assets/hat.png';
 import './header_styling.css';
 
 class Header extends React.Component {

@@ -1,18 +1,29 @@
 const initialState = {
     modalType: null,
-    modalProps: {}
+    modalProps: {},
+    show: false
   }
   
   
 const modalReducers = (state = initialState, action) => {
     switch (action.type) {
-      case 'SHOW_MODAL':
+      case 'CHANGE_MODAL':
         return {
           modalType: action.modalType,
-          modalProps: action.modalProps
+          modalProps: action.modalProps,
         }
+      case 'OPEN_MODAL':
+
+        return {...state, show: true}
       case 'HIDE_MODAL':
-        return initialState
+        let modalState = {...state, show: false}
+        return modalState
+      case 'RESET_MODAL': 
+        return {
+          modalType: null,
+          modalProps: {},
+          show: false
+        }
       default:
         return state
     }

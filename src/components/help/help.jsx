@@ -1,6 +1,6 @@
 import React from 'react';
 import './help_styling.css';
-import {how_to} from '../assets/';
+import {how_to} from '../../assets';
 
 class Help extends React.Component {
     render() {

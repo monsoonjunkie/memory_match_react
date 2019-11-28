@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Cardrow from './card_row.jsx';
-import {one,two,three,four,five,six,seven,eight,nine} from '../assets/';
+import Cardrow from '../card_row/card_row';
 import './game_board_styling.css';
-import {loadDeck, cardToggle, checkMatch} from '../../src/store/gameboard/gameboard_actions';
-import {updatePoints, playerTurn} from '../../src/store/players/players_actions';
+import {loadDeck, cardToggle, checkMatch} from '../../store/gameboard/gameboard_actions';
+import {updatePoints, playerTurn} from '../../store/players/players_actions';
+import {showCritical, showFinisher, openModal, closeModal, resetModal } from '../../store/modal/modal_actions';
 
 
 
@@ -19,16 +19,39 @@ class Gameboard_Base extends React.Component {
     cardClick(id){
       this.props.cardClick(id);
     }
-    checkCard(){
+    checkCard(){      
       let propsCardArr = this.props.gameboard.current
       if(propsCardArr.length === 2){
-        let match = this.props.gameboard.match;
+        let modal = this.props.modal;
+        
         if(propsCardArr[0].path === propsCardArr[1].path){
-          match = true;
+          
+          this.props.checkMatch(true);
+          if(!modal.show){
+            this.matchAnimation();
+          }
+          setTimeout(this.props.playerTurn, 2400);
+        } else {
+
+          setTimeout(()=>{this.props.checkMatch(false); this.props.playerTurn() }, 1000);
         }
         
-        setTimeout(()=>this.props.checkMatch(match), 1000);
+        
       }
+    }
+    matchAnimation() {
+      let matches = this.props.players.totalMatches;
+      matches = matches + 1
+      if(matches === 9){
+        this.props.showFinisher();
+        setTimeout(this.props.openModal,250);
+        setTimeout(this.props.closeModal, 2000);
+      }else {
+        this.props.showCritical();
+        setTimeout(this.props.openModal);
+        setTimeout(this.props.closeModal, 1500);
+      }
+      
     }
     createCardObj(path,index){
       return {
@@ -37,28 +60,12 @@ class Gameboard_Base extends React.Component {
         revealed: false
       }
     }
-    randomList(){
-        const cardArray = [one,two,three,four,five,six,seven,eight,nine];
-        const bigArray = cardArray.concat(cardArray);
-        const cardObjArr = bigArray.map(this.createCardObj);
-        let currentIndex = cardObjArr.length, temporaryValue, randomIndex;
-        
-        while (0 !== currentIndex) {
-        
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-        
-            temporaryValue = cardObjArr[currentIndex];
-            cardObjArr[currentIndex] = cardObjArr[randomIndex];
-            cardObjArr[randomIndex] = temporaryValue;
-        }
-        return cardObjArr;
-    }
     spliceList(array){
         let newArray = array.splice(0,6);
         return newArray;
     }
     render(){
+        
         this.checkCard();
         let deck = [...this.props.gameboard.deck];
         let currentCard = [...this.props.gameboard.current];
@@ -76,10 +83,9 @@ class Gameboard_Base extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const gameboard = state.gameboard
-    return {
-        gameboard
-  }
+
+    // const gameboardProps = {gameboard: state.gameboard, players: state.players, modal: state.modal};
+    return state
 }
   const mapDispatchToProps = dispatch => {
     return {
@@ -92,7 +98,28 @@ const mapStateToProps = state => {
       checkMatch: match => {
         dispatch(checkMatch());
         dispatch(updatePoints(match));
+      },
+      playerTurn: () => {
         dispatch(playerTurn());
+        dispatch(resetModal());
+      },
+      updatePoints: match => {
+        dispatch(updatePoints(match));
+      },
+      showCritical: () =>{
+        dispatch(showCritical());
+      },
+      showFinisher: () => {
+        dispatch(showFinisher());
+      },
+      openModal: () => {
+        dispatch(openModal());
+      },
+      closeModal: () => {
+        dispatch(closeModal());
+      },
+      resetModal: () => {
+        dispatch(resetModal());
       }
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './card_styling.css';
-import Tarotback from '../assets/tarot_back.png';
+import Tarotback from '../../assets/tarot_back.png';
 class Card_Base extends React.Component {
   constructor(props){
     super(props)

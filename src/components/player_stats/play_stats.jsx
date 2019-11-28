@@ -1,7 +1,7 @@
 import React from 'react';
 import './player_stats_styling.css';
 import { connect } from 'react-redux';
-import {updatePoints} from '../../src/store/players/players_actions';
+import {updatePoints} from '../../store/players/players_actions';
 
 class PlayerStats_Base extends React.Component {
     

@@ -11,3 +11,7 @@ export const updatePoints = match => ({
 export const playerTurn = () => ({
   type: '[PLAYER] UPDATE_PLAYERTURN'
 })
+
+export const resetPoints = () => ({
+  type:  '[PLAYER] RESET_POINTS'
+})

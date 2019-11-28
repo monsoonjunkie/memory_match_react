@@ -1,6 +1,6 @@
 import React from 'react';
 import './title_styling.css';
-import {title_screen} from '../assets/'
+import {title_screen} from '../../assets'
 
 class Title extends React.Component {
     render() {

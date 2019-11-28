@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../../components/title.jsx';
+import Title from '../../components/title/title';
 export default () => {
     return (
         <div>
