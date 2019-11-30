@@ -1,4 +1,9 @@
-.portrait {
-    height: 100%;
-    width: 300px;
+.content_align{
+    text-align: center;
+}
+@media only screen and (max-height: 850px){
+    .content_align{
+        max-height: 90vh;
+        overflow: scroll;
+    }
 }
