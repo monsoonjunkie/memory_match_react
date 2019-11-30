@@ -6,6 +6,7 @@ import {
 
 } from "react-router-dom";
 import Welcome from './pages/welcome';
+import PlayerSelect from './pages/player_select'
 import Help from './pages/help';
 import Game from './pages/game';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/help">
             <Help />
+          </Route>
+          <Route path="/playerselect">
+            <PlayerSelect/>
           </Route>
           <Route path="/">
             <Welcome />

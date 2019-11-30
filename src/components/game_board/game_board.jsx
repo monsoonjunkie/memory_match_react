@@ -84,7 +84,6 @@ class Gameboard_Base extends React.Component {
 
 const mapStateToProps = state => {
 
-    // const gameboardProps = {gameboard: state.gameboard, players: state.players, modal: state.modal};
     return state
 }
   const mapDispatchToProps = dispatch => {
