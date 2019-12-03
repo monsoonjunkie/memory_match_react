@@ -5,7 +5,7 @@ export default () => {
     return (
             <div className="container-fluid">
                 <PlayerSelectionHeader/>
-                <div className="container-fluid">
+                <div className="container-fluid pt-1">
                     <PlayerSelection/>
                 </div>
 
