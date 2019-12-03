@@ -88,8 +88,8 @@ const mapStateToProps = state => {
 }
   const mapDispatchToProps = dispatch => {
     return {
-      loadDeck: deck => {
-        dispatch(loadDeck(deck));
+      loadDeck: () => {
+        dispatch(loadDeck());
       },
       cardClick: index => {
         dispatch(cardToggle(index));

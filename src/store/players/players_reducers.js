@@ -3,8 +3,8 @@ const initState = {
         name: 'Joker',
         matches: 0,
         critical: 'joker critical',
-        finisher: null
-
+        finisher: null,
+        
         
 
     },
@@ -12,12 +12,15 @@ const initState = {
         name: 'Panther',
         matches: 0,
         critical: 'panther critical',
-        finisher: null
+        finisher: null,
+        
         
 
     },
     playerTurn: 'player1',
-    totalMatches: 0 
+    totalMatches: 0,
+    selectActive: false,
+    players: 0
 
 };
 
@@ -25,8 +28,9 @@ const initState = {
 const playersReducers = (state = initState, action) => {
     let player = state.playerTurn;
     switch (action.type) {
-      case '[PLAYER] LOAD_NAME':
-        return 
+      case '[PLAYER] LOAD_PLAYER':
+
+        return {...state, [player]: action.payload}
       case '[PLAYER] UPDATE_POINTS':
         let updatePoints = state[player].matches;
         let currentMatches = state.totalMatches;
@@ -48,6 +52,10 @@ const playersReducers = (state = initState, action) => {
         }
       case '[PLAYER] RESET_POINTS': 
         return initState
+      case '[PLAYER] SELECT_ON': 
+        return {...state, selectActive: true}
+      case '[PLAYER] SELECT_OFF':
+          return {...state, selectActive: false}
       default:
         return state
     }

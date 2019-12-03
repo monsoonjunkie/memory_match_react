@@ -1,0 +1,13 @@
+.header_main{
+    background: red;
+    color: black;
+}
+.fontP {
+    font-family: "Personafied";
+}
+.selectActive {
+    display: flex
+}
+.selectOff {
+    display: none;
+}

@@ -3,10 +3,11 @@ import gameBoardReducers from './gameboard/gameboard_reducers';
 import playersReducers from './players/players_reducers';
 import musicReducers from './music/music_reducers';
 import modalReducers from './modal/modal_reducers';
-
+import selectionScreenReducers from './selection_screen/selection_screen_reducers';
 export default combineReducers({
     gameboard: gameBoardReducers,
     players: playersReducers,
     music: musicReducers,
-    modal: modalReducers
+    modal: modalReducers,
+    selection: selectionScreenReducers
 })
