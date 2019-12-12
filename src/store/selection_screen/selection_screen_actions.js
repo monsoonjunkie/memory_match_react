@@ -10,6 +10,6 @@ export const loadChar = (char) => ({
 
 export const confirmChar = () => ({
     type: '[SELECTION_SCREEN] CONFIRM_CHAR_SELECT', 
-    payload: char
+
 })
 
