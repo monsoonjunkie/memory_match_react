@@ -1,6 +1,7 @@
 import React from 'react';
 import './title_styling.css';
-import {title_screen} from '../../assets'
+import {Link} from 'react-router-dom';
+import {title_screen} from '../../assets';
 
 class Title extends React.Component {
     render() {
@@ -11,7 +12,9 @@ class Title extends React.Component {
                 </div>
                 
                 <div>Memory Match Game</div>
-                <button>Click to Begin</button>
+                <Link to="/help">
+                    <button>Begin</button>
+                </Link>
             </div>
         )
     }

@@ -14,7 +14,7 @@ export default  () => {
             <div className ="mid_section">
                 <div className="row no-gutters">
                     <div className="col-3 status_screen">
-                        <Profile profileImage = {joker} player = {1}/>
+                        <Profile profileImage = {joker} player = {'player1'}/>
                         <PlayerStats player = {'player1'}/>
                     </div>
                     <div className="col">
@@ -22,7 +22,7 @@ export default  () => {
                     </div>
                     <div className="col-3 status_screen">
                         <PlayerStats player = {'player2'}/>
-                        <Profile profileImage ={panther} player = {2}/>
+                        <Profile profileImage ={panther} player = {'player2'}/>
                     </div>
                 </div>
             </div>

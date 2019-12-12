@@ -65,7 +65,7 @@ class Gameboard_Base extends React.Component {
         return newArray;
     }
     render(){
-        
+        console.log('store players', this.props.players)
         this.checkCard();
         let deck = [...this.props.gameboard.deck];
         let currentCard = [...this.props.gameboard.current];

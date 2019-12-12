@@ -70,6 +70,7 @@ class PlayerSelection_Base extends React.Component {
                 <div className="row content_align">
                     {characterImages}
                 </div>
+                
 
         )
     }

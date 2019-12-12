@@ -1,10 +1,11 @@
+import {joker, panther} from '../../assets/portraits/';
 const initState = {
     player1: {
         name: 'Joker',
         matches: 0,
         critical: 'joker critical',
         finisher: null,
-        
+        portrait: joker,
         
 
     },
@@ -13,7 +14,7 @@ const initState = {
         matches: 0,
         critical: 'panther critical',
         finisher: null,
-        
+        portrait: panther
         
 
     },
